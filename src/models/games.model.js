@@ -9,7 +9,7 @@ module.exports = function (app) {
   const gamesSchema = new Schema({
     pads: [padSchema],
     started: { type: Boolean, required: true, 'default': false },
-    demo: { type: Boolean, required true, 'default': false},
+    demo: { type: Boolean, required: true, 'default': false},
     players: [playerSchema],
     turn: { type: Number, required: true, 'default': 0 },
     winner: { type: Number, required: false },
@@ -27,10 +27,6 @@ module.exports = function (app) {
 
   const padSchema = new Schema({
     color: { type: String, required: true },
-    active: { type: boolean, required: true, 'default': false},
-
-  })
-
-  const gamesModel = mongoose.model('games', GamesSchema)
-
-  module.exports = GamesModel;
+    active: { type: boolean, required: true, 'default': false}
+  });
+};
