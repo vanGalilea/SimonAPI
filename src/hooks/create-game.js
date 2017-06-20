@@ -9,7 +9,6 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
     const currentUser = hook. params.user;
 
     hook.data = {
-      userId: currentUser._id,
       pads: [
         {color: "red"},
         {color: "yellow"},
