@@ -9,7 +9,7 @@ module.exports = function (app) {
   const gamesSchema = new Schema({
     pads: [padSchema],
     started: { type: Boolean, required: true, 'default': false },
-    demo: { type: Boolean, required true 'default': false},
+    demo: { type: Boolean, required true, 'default': false},
     players: [playerSchema],
     turn: { type: Number, required: true, 'default': 0 },
     winner: { type: Number, required: false },
