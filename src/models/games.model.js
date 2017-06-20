@@ -27,7 +27,7 @@ module.exports = function (app) {
 
   const padSchema = new Schema({
     color: { type: String, required: true },
-    active: { type: boolean, required: true, default: false},
+    active: { type: boolean, required: true, 'default': false},
 
   })
 
