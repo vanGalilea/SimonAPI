@@ -1,4 +1,3 @@
-
 function shuffle(array) {
   let counter = array.length;
   while (counter > 0) {
@@ -24,10 +23,10 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-var
 
     let colors =('yellow, red, blue, green, ').repeat(5).split(', ');
     colors.pop();
-
+    hook.data.pads = shuffle(colors);
 
     //create pads sequence
-    hook.data.pads = colors
+    hook.data.pads
       .map((color) =>({ color: color, active: false}));
 
     return Promise.resolve(hook);
