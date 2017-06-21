@@ -1,5 +1,4 @@
-
-
+const joinGame = require('../../hooks/join');
 const createGame = require('../../hooks/create-game');
 const { authenticate } = require('feathers-authentication').hooks;
 const { restrictToAuthenticated } = require('feathers-authentication-hooks');
@@ -21,12 +20,12 @@ const ownerSchema = {
 
 module.exports = {
   before: {
-    all: [...restrict],
+    all: [],
     find: [],
     get: [],
     create: [createGame()],
-    update: [],
-    patch: [],
+    update: [joinGame()],
+    patch: [joinGame()],
     remove: []
   },
 
