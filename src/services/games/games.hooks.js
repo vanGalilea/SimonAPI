@@ -21,7 +21,7 @@ const ownerSchema = {
 
 module.exports = {
   before: {
-    all: [],
+    all: [...restrict],
     find: [],
     get: [],
     create: [createGame()],
