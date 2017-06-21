@@ -1,5 +1,4 @@
-
-
+const joinGame = require('../../hooks/join');
 const createGame = require('../../hooks/create-game');
 const { authenticate } = require('feathers-authentication').hooks;
 const { restrictToAuthenticated } = require('feathers-authentication-hooks');
@@ -25,8 +24,8 @@ module.exports = {
     find: [],
     get: [],
     create: [createGame()],
-    update: [],
-    patch: [],
+    update: [joinGame()],
+    patch: [joinGame()],
     remove: []
   },
 
