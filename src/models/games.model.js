@@ -27,7 +27,6 @@ module.exports = function (app) {
     winner: { type: Number, required: false },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
-    userId: { type: Schema.Types.ObjectId, ref: 'user' }
   });
 
   return mongooseClient.model('games', gamesSchema);

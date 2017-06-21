@@ -22,12 +22,12 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-var
       name: user.name,
     }];
 
-    let colors = ('yellow, red, blue, green,').repeat(5).split(', ');
+    let colors =('yellow, red, blue, green, ').repeat(5).split(', ');
     colors.pop();
 
 
     //create pads sequence
-    hook.data.pads = shuffle(colors)
+    hook.data.pads = colors
       .map((color) =>({ color: color, active: false}));
 
     return Promise.resolve(hook);

@@ -2,15 +2,12 @@
 
 const createGame = require('../../hooks/create-game');
 const { authenticate } = require('feathers-authentication').hooks;
-const { restrictToOwner, associateCurrentUser, restrictToAuthenticated } = require('feathers-authentication-hooks');
+const { restrictToAuthenticated } = require('feathers-authentication-hooks');
 const { populate } = require('feathers-hooks-common');
 
 const restrict = [
   authenticate('jwt'),
   restrictToAuthenticated(),
-  restrictToOwner({
-    ownerField: 'userId'
-  })
 ];
 
 const ownerSchema = {
@@ -24,7 +21,7 @@ const ownerSchema = {
 
 module.exports = {
   before: {
-    all: [...restrict],
+    all: [],
     find: [],
     get: [],
     create: [createGame()],
