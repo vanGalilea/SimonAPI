@@ -24,7 +24,7 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-var
 
     let colors =('yellow, red, blue, green, ').repeat(5).split(', ');
     colors.pop();
-    hook.data.pads = shuffle(colors).map((color) =>({ color: color, active: false}));
+    hook.data.pads = shuffle(colors).map((color) =>({ color: color }));
 
     return Promise.resolve(hook);
   };

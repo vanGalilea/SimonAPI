@@ -8,7 +8,6 @@ module.exports = function (app) {
 
   const padSchema = new Schema({
     color: { type: String, required: true },
-    active: { type: Boolean, required: true, 'default': false}
   });
 
   const playerSchema = new Schema({
@@ -24,6 +23,7 @@ module.exports = function (app) {
     demo: { type: Boolean, required: true, 'default': false},
     players: [playerSchema],
     turn: { type: Number, required: true, 'default': 0 },
+    round: { type: Number, required: true, 'default': 0 },
     winner: { type: Number, required: false },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
@@ -31,4 +31,4 @@ module.exports = function (app) {
 
   return mongooseClient.model('games', gamesSchema);
 
-  };
+};
