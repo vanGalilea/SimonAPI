@@ -18,14 +18,16 @@ const ownerSchema = {
   }
 };
 
+const padPush = require('../../hooks/pad-push');
+
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
     create: [createGame()],
-    update: [joinGame()],
-    patch: [joinGame()],
+    update: [joinGame(), padPush()],
+    patch: [joinGame(), padPush()],
     remove: []
   },
 

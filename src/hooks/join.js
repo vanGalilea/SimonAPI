@@ -19,14 +19,14 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
 
         if (!joined && wantsToJoin) {
           hook.data = {
-            players: players.concat({ userId: user._id, pairs: [] })
-          }
+            players: players.concat({ userId: user._id, name: user.name })
+          };
         }
 
         if (joined && !wantsToJoin) {
           hook.data = {
             players: players.filter((p) => (p.userId !== user._id))
-          }
+          };
         }
 
         return Promise.resolve(hook);
