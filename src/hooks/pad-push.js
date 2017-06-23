@@ -11,8 +11,7 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
 
     // see if user is a player
     return hook.app.service('games').get(hook.id).then((game) => {
-      const { players, turn, pads } = game;
-      let { round } = game;
+      const { players, turn, pads, round } = game;
       const playerIds = players.map((p) => (p.userId.toString()));
       const joined = playerIds.includes(user._id.toString());
       const hasTurn = playerIds.indexOf(user._id.toString()) === turn;
@@ -26,22 +25,6 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
         throw new errors.Unprocessable('It is not your turn yet!');
       }
 
-
-      if (pads[round].color !== hook.data.pad) {
-        let newPlayers= players;
-        newPlayers[turn].lives--;
-        hook.data.players = newPlayers;
-        return hook;
-        throw new errors.Unprocessable('Wrong color!');
-      }
-
-      if (pads[round].color === hook.data.pad) {
-        let newPlayers= players;
-        newPlayers[turn].score++;
-        hook.data.players = newPlayers;
-        return hook;
-      }
-
       let newRound = round + 1;
       let newTurn = turn + 1;
 
@@ -50,10 +33,25 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
       hook.data.round = newRound;
       hook.data.turn = newTurn;
 
-      console.log(hook);
-      
-      return hook;
 
+      console.log(`ROUND: ${round}, TURN: ${turn}`);
+
+      if (pads[round].color === hook.data.pad) {
+        let newPlayers= players;
+        newPlayers[turn].score++;
+        hook.data.players = newPlayers;
+
+        return hook;
+      } else {
+        let newPlayers= players;
+        newPlayers[turn].lives--;
+        hook.data.players = newPlayers;
+
+        return hook;
+      }
+
+      return Promise.resolve(hook);
     });
   };
+
 };
