@@ -3,6 +3,7 @@ const createGame = require('../../hooks/create-game');
 const { authenticate } = require('feathers-authentication').hooks;
 const { restrictToAuthenticated } = require('feathers-authentication-hooks');
 const { populate } = require('feathers-hooks-common');
+const padPush = require('../../hooks/pad-push');
 
 const restrict = [
   authenticate('jwt'),
@@ -18,7 +19,6 @@ const ownerSchema = {
   }
 };
 
-const padPush = require('../../hooks/pad-push');
 
 module.exports = {
   before: {
